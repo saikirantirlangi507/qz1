@@ -1,0 +1,6 @@
+.auth-page{min-height:calc(100vh - 68px);display:flex;align-items:center;justify-content:center;padding:2rem 1rem;background:linear-gradient(135deg,var(--navy),#3b1d8f)}
+.auth-card{background:#fff;border-radius:24px;padding:2rem;width:100%;max-width:430px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.auth-card h1{text-align:center;font-size:1.6rem}
+.tabs{display:flex;background:#f1eefc;border-radius:999px;padding:4px;margin-bottom:1.2rem}
+.tabs button{flex:1;border:0;background:none;padding:.55rem;border-radius:999px;font:600 .9rem inherit;font-family:inherit;cursor:pointer;color:var(--muted)}
+.tabs button.active{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff}

@@ -1,0 +1,68 @@
+let n = 0;
+const q = (text, options, correct, explanation) => ({ id: 'q' + ++n, type: 'mcq', text, options, correct, marks: 1, explanation });
+const mk = (id, title, description, category, difficulty, duration, questions) => ({
+  id, title, description, category, difficulty, duration, passPercent: 40, status: 'published', active: true, createdAt: new Date().toISOString(), questions,
+});
+
+export const defaultQuizzes = [
+  mk('quiz-gk', 'General Knowledge Quiz', 'Science, geography, history and general awareness for curious minds.', 'General Knowledge', 'Easy', 10, [
+    q('Which planet is known as the Red Planet?', ['Venus', 'Mars', 'Jupiter', 'Saturn'], 1, 'Iron oxide on its surface gives Mars its red colour.'),
+    q('What is the capital of Australia?', ['Sydney', 'Melbourne', 'Canberra', 'Perth'], 2, 'Canberra was purpose-built as the capital.'),
+    q('In which year did World War II end?', ['1918', '1939', '1945', '1950'], 2, 'WWII ended in 1945.'),
+    q('Which gas do plants absorb for photosynthesis?', ['Oxygen', 'Carbon dioxide', 'Nitrogen', 'Hydrogen'], 1, 'Plants take in CO2 and release oxygen.'),
+    q('Which is the largest ocean on Earth?', ['Atlantic', 'Indian', 'Arctic', 'Pacific'], 3, 'The Pacific covers about a third of the planet.'),
+    q('Who was the first person to walk on the Moon?', ['Yuri Gagarin', 'Neil Armstrong', 'Buzz Aldrin', 'Michael Collins'], 1, 'Neil Armstrong stepped onto the Moon in 1969.'),
+    q('Which is the largest continent by area?', ['Africa', 'Asia', 'Europe', 'North America'], 1, 'Asia is the largest and most populous continent.'),
+    q('Who painted the Mona Lisa?', ['Michelangelo', 'Raphael', 'Leonardo da Vinci', 'Vincent van Gogh'], 2, 'Leonardo da Vinci painted it in the early 1500s.'),
+    q('Which country is called the Land of the Rising Sun?', ['China', 'Japan', 'Thailand', 'South Korea'], 1, "Japan's name means origin of the sun."),
+    q('How many continents are there on Earth?', ['5', '6', '7', '8'], 2, 'Africa, Antarctica, Asia, Australia, Europe, North America and South America.'),
+  ]),
+  mk('quiz-cs', 'Computer Science Quiz', 'Programming, operating systems, networks and databases fundamentals.', 'Computer Science', 'Medium', 12, [
+    q('Which of these is NOT an operating system?', ['Linux', 'Windows', 'Oracle', 'macOS'], 2, 'Oracle is a database product, not an OS.'),
+    q('Which data structure follows FIFO order?', ['Stack', 'Queue', 'Tree', 'Graph'], 1, 'A queue removes the oldest item first.'),
+    q('What does SQL stand for?', ['Structured Query Language', 'Simple Question Language', 'Sequential Query Logic', 'Standard Queue List'], 0, 'SQL = Structured Query Language.'),
+    q('Which OSI layer is responsible for routing?', ['Data Link', 'Network', 'Transport', 'Session'], 1, 'The Network layer (IP) routes packets.'),
+    q('What is the default port of HTTP?', ['21', '25', '80', '443'], 2, 'HTTP uses 80; HTTPS uses 443.'),
+    q('Which CPU scheduling algorithm gives each process a fixed time slice?', ['FCFS', 'SJF', 'Round Robin', 'Priority'], 2, 'Round Robin uses a time quantum.'),
+    q('What does a primary key do in a table?', ['Allows duplicates', 'Uniquely identifies each row', 'Can always be NULL', 'Links two databases'], 1, 'A primary key is unique and non-null.'),
+    q('What is the time complexity of binary search?', ['O(n)', 'O(log n)', 'O(n log n)', 'O(1)'], 1, 'Each step halves the search space.'),
+    q('What is a deadlock?', ['A process finishing early', "Processes waiting forever for each other's resources", 'A memory leak', 'A network outage'], 1, 'In a deadlock, processes block each other indefinitely.'),
+    q('Which protocol translates domain names into IP addresses?', ['DHCP', 'DNS', 'FTP', 'SMTP'], 1, 'DNS maps names to IP addresses.'),
+  ]),
+  mk('quiz-java', 'Java Programming Quiz', 'OOP concepts, classes, objects, inheritance and polymorphism in Java.', 'Programming', 'Medium', 12, [
+    q('Which keyword is used to inherit a class in Java?', ['implements', 'extends', 'inherits', 'super'], 1, '`extends` creates a subclass.'),
+    q('Which is NOT a pillar of OOP?', ['Encapsulation', 'Compilation', 'Polymorphism', 'Abstraction'], 1, 'The four pillars are encapsulation, abstraction, inheritance and polymorphism.'),
+    q('Which keyword creates an object?', ['class', 'new', 'object', 'create'], 1, '`new` allocates an instance.'),
+    q('Method overloading is an example of…', ['Runtime polymorphism', 'Compile-time polymorphism', 'Inheritance', 'Encapsulation'], 1, 'Overloads are resolved at compile time.'),
+    q('When does Java provide a default constructor?', ['Always', 'When no constructor is defined', 'Never', 'Only for abstract classes'], 1, 'Defining any constructor removes the default one.'),
+    q('Which keyword prevents a method from being overridden?', ['const', 'final', 'void', 'this'], 1, '`final` methods cannot be overridden.'),
+    q('How does Java achieve multiple inheritance of type?', ['Interfaces', 'Pointers', 'Templates', 'Macros'], 0, 'A class can implement many interfaces.'),
+    q('A parent reference holds a child object and calls an overridden method. Which version runs?', ["Parent's", "Child's", 'Both', 'None'], 1, "Dynamic dispatch picks the child's version at runtime."),
+    q('Which keyword refers to the current object?', ['this', 'super', 'self', 'current'], 0, '`this` is the current instance.'),
+    q('An abstract class cannot be…', ['Extended', 'Instantiated', 'Given constructors', 'Given methods'], 1, 'Abstract classes cannot be instantiated directly.'),
+  ]),
+  mk('quiz-python', 'Python Programming Quiz', 'Variables, loops, functions, lists and dictionaries in Python.', 'Programming', 'Easy', 8, [
+    q('What does print(type(5)) show?', ["<class 'int'>", "<class 'float'>", "<class 'str'>", 'int'], 0, '5 is an integer.'),
+    q('Which creates a list?', ['(1, 2)', '[1, 2]', '{1, 2}', '<1, 2>'], 1, 'Lists use square brackets.'),
+    q('Which keyword defines a function?', ['function', 'def', 'fun', 'define'], 1, '`def` starts a function definition.'),
+    q('What is len([1, 2, 3])?', ['2', '3', '4', 'Error'], 1, 'The list has three items.'),
+    q('What does list(range(3)) give?', ['[1, 2, 3]', '[0, 1, 2]', '[0, 1, 2, 3]', '[1, 2]'], 1, 'range(3) starts at 0 and stops before 3.'),
+    q("For d = {'a': 1}, what is d['a']?", ['a', '1', 'Error', 'None'], 1, 'Indexing a dict by key returns its value.'),
+    q('Which keyword exits a loop early?', ['stop', 'break', 'exit', 'continue'], 1, '`break` leaves the loop immediately.'),
+    q('Which type is immutable?', ['list', 'dict', 'tuple', 'set'], 2, 'Tuples cannot be changed after creation.'),
+    q('What is 7 // 2?', ['3.5', '3', '4', '2'], 1, '// is floor division.'),
+    q('Which method adds an item to the end of a list?', ['add', 'append', 'push', 'insert_end'], 1, 'list.append(x) adds to the end.'),
+  ]),
+  mk('quiz-ai', 'Artificial Intelligence Quiz', 'Machine learning, AI algorithms, neural networks and deep learning.', 'Artificial Intelligence', 'Hard', 15, [
+    q('Which algorithm updates neural network weights using gradients?', ['Backpropagation', 'Dijkstra', 'Quick sort', 'Apriori'], 0, 'Backpropagation computes gradients layer by layer.'),
+    q('Which of these is an unsupervised learning algorithm?', ['Linear regression', 'K-means', 'Logistic regression', 'Decision tree classifier'], 1, 'K-means clusters unlabeled data.'),
+    q('Which activation function outputs values between 0 and 1?', ['ReLU', 'Sigmoid', 'Tanh', 'Leaky ReLU'], 1, 'Sigmoid squashes inputs into (0, 1).'),
+    q('What is overfitting?', ['Good on training data, poor on unseen data', 'Poor on all data', 'Training that is too fast', 'Using too little data on purpose'], 0, 'The model memorises noise instead of generalising.'),
+    q('CNNs are mainly used for…', ['Image data', 'Sorting numbers', 'Database indexing', 'Compilers'], 0, 'Convolutions capture spatial patterns.'),
+    q('In A* search, the evaluation function is…', ['f(n) = g(n) + h(n)', 'f(n) = g(n) - h(n)', 'f(n) = h(n)', 'f(n) = g(n) * h(n)'], 0, 'Cost so far plus heuristic estimate.'),
+    q('The vanishing gradient problem is most common in…', ['Very deep networks with sigmoid/tanh', 'Linear models', 'K-nearest neighbours', 'Decision stumps'], 0, 'Gradients shrink as they pass through many saturating layers.'),
+    q('Which technique randomly turns off neurons during training?', ['Dropout', 'Pooling', 'Padding', 'Stride'], 0, 'Dropout reduces overfitting.'),
+    q('Which mechanism is central to the Transformer architecture?', ['Self-attention', 'Convolution', 'Recurrence only', 'Hash tables'], 0, 'Self-attention weighs relationships between all tokens.'),
+    q('A reinforcement learning agent learns mainly from…', ['Labelled examples', 'Rewards and penalties', 'Clustering', 'Manual rules'], 1, 'It maximises cumulative reward through trial and error.'),
+  ]),
+];
